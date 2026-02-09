@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Reversi Engine Test</title>
+</head>
+<body>
+    <h1>Reversi Engine Test</h1>
+    <div id="output"></div>
+    <script src="js/engine.js"></script>
+    <script>
+        const output = document.getElementById('output');
+
+        function log(message) {
+            const p = document.createElement('p');
+            p.textContent = message;
+            output.appendChild(p);
+            console.log(message);
+        }
+
+        log('Testing Reversi Engine...');
+
+        try {
+            // Create engine
+            const engine = new ReversiEngine();
+            log('✓ Engine created');
+
+            // Create game state
+            engine.createGameState(8, 8);
+            log('✓ Game state created');
+
+            // Start new game
+            engine.newGame();
+            log('✓ New game started');
+
+            // Check board
+            const whiteCount = engine.getWhiteCount();
+            const blackCount = engine.getBlackCount();
+            log(`✓ White: ${whiteCount}, Black: ${blackCount}`);
+
+            // Get valid moves
+            const validMoves = engine.getValidMoves();
+            log(`✓ Valid moves: ${validMoves.length}`);
+            log(`  Moves: ${JSON.stringify(validMoves)}`);
+
+            // Create AI player
+            const aiPlayer = new AIPlayer(1, 1); // Medium difficulty
+            log('✓ AI player created');
+
+            // Get AI move
+            const aiMove = aiPlayer.getBestMove(engine);
+            log(`✓ AI move: (${aiMove.x}, ${aiMove.y})`);
+
+            // Make AI move
+            const result = engine.makeMove(aiMove.x, aiMove.y);
+            log(`✓ Move made: ${result}`);
+
+            // Check new scores
+            const newWhiteCount = engine.getWhiteCount();
+            const newBlackCount = engine.getBlackCount();
+            log(`✓ After move - White: ${newWhiteCount}, Black: ${newBlackCount}`);
+
+            log('\n✅ All tests passed!');
+        } catch (error) {
+            log(`❌ Error: ${error.message}`);
+            console.error(error);
+        }
+    </script>
+</body>
+</html>
