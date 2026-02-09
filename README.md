@@ -122,13 +122,8 @@ web/
 ## 🎨 Screenshots
 
 ### Game Board
-*(Add screenshots of the game board here)*
+<img width="1066" height="915" alt="reversi" src="https://github.com/user-attachments/assets/ebd160c8-d13a-412d-8125-f16310f5c99e" />
 
-### Mobile View
-*(Add mobile screenshots here)*
-
-### Rules Modal
-*(Add rules modal screenshot here)*
 
 ---
 
